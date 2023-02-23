@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.EnterCode"
+    android:orientation="vertical"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
+    <Button
+        android:id="@+id/enter_code_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhập mã xác thực của bạn"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Một tin nhắn SMS đã được gửi đến số điện thoại của bạn"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/edt_sms_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/btn_confirm_smsCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xác Nhận"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa nhận được sms?"
+            android:textSize="20dp"
+            android:textColor="@color/purple_500"/>
+
+        <Button
+            android:id="@+id/btn_send_again"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gửi lại"
+            android:background="@drawable/button_custom"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tv_time_countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

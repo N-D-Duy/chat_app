@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.CreateProfileActivity"
+    android:orientation="vertical"
+    android:background="#EDDBA5">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:layout_gravity="center"
+        android:text="Custom Your Profile"
+        android:layout_marginTop="20dp"
+        android:textColor="#CF2B63"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:id="@+id/layout_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"
+            android:background="@drawable/imageview_circle"/>
+
+        <TextView
+            android:id="@+id/tv_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Image"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/edt_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/edittext_profile"
+        />
+
+    <Button
+        android:id="@+id/btn_done_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="continue"
+        android:textSize="20sp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="false"/>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
