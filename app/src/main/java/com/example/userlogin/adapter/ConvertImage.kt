@@ -2,13 +2,11 @@ package com.example.userlogin.adapter
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.media.Image
 import android.provider.MediaStore
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import java.net.URL
+import com.example.userlogin.model.GlideApp
 
 
 class ConvertImage(context: Context) {
@@ -20,7 +18,7 @@ class ConvertImage(context: Context) {
     }
 
     fun urlToImage(imageUrl: String, imageView: ImageView) {
-        Glide.with(mContext)
+        GlideApp.with(mContext)
             .asBitmap()
             .load(imageUrl)
             .into(object : SimpleTarget<Bitmap?>() {

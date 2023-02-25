@@ -20,6 +20,15 @@
         android:theme="@style/Theme.UserLogin"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.LoadingHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.LoadingCreateProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
@@ -27,23 +36,17 @@
         <activity
             android:name=".ui.activities.CreateProfileActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.activities.CreateAccount"
+        <!--
+<activity
+            android:name=".fragments.SignUpPhoneFragment"
             android:exported="false" />
         <activity
-            android:name=".ui.fragments.SignUpPhoneFragment"
+            android:name=".fragments.SignUpEmailFragment"
             android:exported="false" />
-        <activity
-            android:name=".ui.fragments.SignUpEmailFragment"
-            android:exported="false" />
+        -->
         <activity
             android:name=".ui.activities.EnterCode"
             android:exported="false" />
-        <!--
-<activity
-            android:name=".activities.PhoneCodeActivity"
-            android:exported="false" />
-        -->
         <activity
             android:name=".ui.activities.StartActivity"
             android:exported="false" />

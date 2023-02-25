@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         backgroundExecutor.schedule({
 
             nextActivity()
-        }, 2, TimeUnit.SECONDS)
+        }, 1, TimeUnit.SECONDS)
     }
 
     private fun nextActivity() {
@@ -38,12 +38,10 @@ class SplashActivity : AppCompatActivity() {
         }else{
             Log.e(TAG, "user is not null")
 
-            val isCreatedProfile = prefs.getBoolean("isCreatedProfile", false)
             val uid = user.uid
             prefs.edit().putString("uid", uid).apply()
 
-
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoadingHomeActivity::class.java)
             startActivity(intent)
             finish()
         }

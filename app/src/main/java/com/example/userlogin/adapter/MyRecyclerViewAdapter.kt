@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.userlogin.R
-import com.example.userlogin.model.User
+import com.example.userlogin.model.UserProfile
 import kotlinx.android.synthetic.main.item_user_messenger.view.*
 import java.util.*
 
 
-open class MyRecyclerViewAdapter(var list: ArrayList<User>, val context:Context) :
+open class MyRecyclerViewAdapter(var list: ArrayList<UserProfile>, val context:Context) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
 
     private val mContext = context
@@ -60,7 +60,7 @@ open class MyRecyclerViewAdapter(var list: ArrayList<User>, val context:Context)
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults? {
                 val oReturn = FilterResults()
-                val results: ArrayList<User> = ArrayList()
+                val results: ArrayList<UserProfile> = ArrayList()
                 if (constraint != null && constraint.isNotEmpty()) {
                     if (filteredItems.size > 0) {
                         for (cd in filteredItems) {
@@ -82,7 +82,7 @@ open class MyRecyclerViewAdapter(var list: ArrayList<User>, val context:Context)
                 constraint: CharSequence?,
                 results: FilterResults
             ) {
-                list = ArrayList(results.values as ArrayList<User>)
+                list = ArrayList(results.values as ArrayList<UserProfile>)
                 notifyDataSetChanged()
 
             }

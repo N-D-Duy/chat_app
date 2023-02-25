@@ -3,36 +3,29 @@ package com.example.userlogin.ui.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.userlogin.FireBaseAuthSingleton
-import com.example.userlogin.R
 import com.example.userlogin.databinding.FragmentSignInPhoneBinding
-import com.example.userlogin.databinding.FragmentSignUpPhoneBinding
-import com.example.userlogin.ui.activities.CreateProfileActivity
 import com.example.userlogin.ui.activities.EnterCode
+import com.example.userlogin.ui.activities.LoadingCreateProfileActivity
 import com.example.userlogin.ui.activities.SignUpActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import java.util.concurrent.TimeUnit
-import kotlin.properties.Delegates
 
 class SignInPhoneFragment : Fragment() {
     private lateinit var binding: FragmentSignInPhoneBinding
     private val TAG = SignUpActivity::class.java.name
     private val auth = FireBaseAuthSingleton.instance
     private lateinit var phoneNumber: String
-    private var isCreatedProfile by Delegates.notNull<Boolean>()
     private val dbRef = FirebaseDatabase.getInstance(
         "https://myapplication-43a36-default-rtdb.asia-southeast1.firebasedatabase.app"
     )
@@ -49,7 +42,7 @@ class SignInPhoneFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignInPhoneBinding.inflate(inflater, container, false)
         binding.btnSignInPhoneContinue.setOnClickListener {
             val strPhone = binding.edtSignInPhone.text.toString()
@@ -108,7 +101,7 @@ class SignInPhoneFragment : Fragment() {
                     updates["uid"] = uid
                     dbRef.child("users").child(uid).updateChildren(updates)
 
-                    goToCreateProfileActivity()
+                    goToLoadingActivity()
 
                 } else {
                     // Sign in failed, display a message and update the UI
@@ -121,13 +114,10 @@ class SignInPhoneFragment : Fragment() {
             }
     }
 
-    private fun goToCreateProfileActivity() {
-        val intent = Intent(requireContext(), CreateProfileActivity::class.java)
+    private fun goToLoadingActivity() {
+        val intent = Intent(requireContext(), LoadingCreateProfileActivity::class.java)
         startActivity(intent)
+        activity?.finish()
     }
-
-
-
-
 
 }
