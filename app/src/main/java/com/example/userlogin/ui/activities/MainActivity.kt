@@ -8,20 +8,28 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.userlogin.R
+import com.example.userlogin.adapter.ConvertImage
 import com.example.userlogin.adapter.MySharedPreferences
+import com.example.userlogin.adapter.UserProfileViewModel
 import com.example.userlogin.databinding.ActivityMainBinding
+import com.example.userlogin.model.UserProfile
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.item_user_messenger.view.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,12 +43,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        setSupportActionBar(binding.appBarMain.toolbar)
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        val mainViewModel = ViewModelProvider(this)[UserProfileViewModel::class.java]
+        mainViewModel.users.observe(this){
+            if(it.isNotEmpty()){
+                Log.e("get view model from", "main")
+                updateUI(it)
+            }
+        }
+
+
+
+        setSupportActionBar(binding.appBarMain.toolbar)
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -65,6 +84,27 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    private fun updateUI(list: ArrayList<UserProfile>?) {
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        if (list != null) {
+            Log.e("list main", "not empty")
+            for(user in list){
+                if(user.uid == uid){
+                    Log.e("image url ", user.imgUrl)
+                    val tvHeaderNav = binding.navView.getHeaderView(0).findViewById<TextView>(R.id.tv_nav_username)
+                    val imgHeaderNav = binding.navView.getHeaderView(0).findViewById<ImageView>(R.id.img_nav_profile)
+
+                    ConvertImage(this).urlToImage(user.imgUrl, imgHeaderNav)
+                    tvHeaderNav.text = user.displayName
+                }
+            }
+        }
+        else{
+            Log.e("list main", "empty")
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){

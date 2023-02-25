@@ -33,6 +33,7 @@ class CreateProfileActivity : AppCompatActivity() {
     private lateinit var mImageUri:Uri
     private lateinit var userNameProfile:String
     private val uid = FirebaseAuth.getInstance().currentUser!!.uid
+    private val mFireStore = FirebaseFirestore.getInstance()
     private val mStorageRef = FirebaseStorage.getInstance(
         "gs://myapplication-43a36.appspot.com")
         .reference
@@ -70,7 +71,7 @@ class CreateProfileActivity : AppCompatActivity() {
 
         })
         btn_done_profile.setOnClickListener {
-            upLoadProfileToFireStore(uid, userNameProfile)
+            upLoadProfileToDB(uid, userNameProfile)
             goToMainActivity()
             updateProfileStatus()
         }
@@ -130,7 +131,7 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun upLoadProfileToFireStore(uid:String, displayName: String){
+    private fun upLoadProfileToDB(uid:String, displayName: String){
         val storageReference = mStorageRef.child("images/$displayName.png")
         storageReference.downloadUrl.addOnSuccessListener { uri -> // Lấy URL hình ảnh
             val imageUrl = uri.toString()
@@ -141,6 +142,22 @@ class CreateProfileActivity : AppCompatActivity() {
             userProfile["imageUrl"] = imageUrl
             userProfile["isCreatedProfile"] = true
             dbRef.child("users-profile").child(uid).updateChildren(userProfile)
+
+            // lưu thông tin profile người dùng lên FireStore
+
+            val userProfileStore = hashMapOf(
+                "displayName" to displayName,
+                "imageUrl" to imageUrl,
+                "uid" to uid
+            )
+            mFireStore.collection("users-profile").document(uid)
+                .set(userProfileStore)
+                .addOnSuccessListener {
+                    Log.d("fire store", "DocumentSnapshot added")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("fire store", "Error adding document", e)
+                }
 
         }
     }

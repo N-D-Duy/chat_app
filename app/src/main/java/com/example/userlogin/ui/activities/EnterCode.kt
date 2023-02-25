@@ -123,13 +123,7 @@ class EnterCode : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.e(TAG, "signInWithCredential:success")
 
-                    val user = task.result?.user
-                    val uid = user!!.uid
-                    val updates: MutableMap<String, Any> = HashMap()
-
-                    updates["uid"] = uid
-                    dbRef.child("check-profile").child(uid).updateChildren(updates)
-                    goToCreateProfileActivity()
+                    goToLoadingActivity()
                 } else {
                     // Sign in failed, display a message and update the UI
                     Log.e(TAG, "signInWithCredential:failure", task.exception)
@@ -141,9 +135,11 @@ class EnterCode : AppCompatActivity() {
             }
     }
 
-    private fun goToCreateProfileActivity() {
-        val intent = Intent(this, CreateProfileActivity::class.java)
+
+    private fun goToLoadingActivity() {
+        val intent = Intent(this, LoadingCreateProfileActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 

@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_chat_input.xml" value="0.1685" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_chat_top.xml" value="0.1685" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_header_chat.xml" value="0.166" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_item_message.xml" value="0.1685" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_item_received_message.xml" value="0.1685" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/background_item_sent_message.xml" value="0.1685" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/button_custom.xml" value="0.1475" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/button_white_background.xml" value="0.1475" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/custom_edittext.xml" value="0.1505" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/edittext_profile.xml" value="0.1505" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_back.xml" value="0.1685" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1505" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1505" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1685" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_baseline_sign_out_24.xml" value="0.1505" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1505" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/imageview_circle.xml" value="0.1505" />
@@ -17,9 +25,12 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/drawable/side_nav_bar.xml" value="0.1505" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout-w936dp/activity_login.xml" value="0.19453125" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_chat.xml" value="0.2" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_create_account.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_create_profile.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_enter_code.xml" value="0.2453125" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_loading_create_profile.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_loading_home.xml" value="0.1296875" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_login.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/activity_other_login.xml" value="0.259375" />
@@ -44,6 +55,9 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/fragment_sign_up_email.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/fragment_sign_up_phone.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/fragment_slideshow.xml" value="0.259375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_chat_message.xml" value="0.259375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_chat_received_message.xml" value="0.259375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_chat_sent_message.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_phone_code.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_user_messager.xml" value="0.259375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/UserLogin/app/src/main/res/layout/item_user_messenger.xml" value="0.12613981762917933" />

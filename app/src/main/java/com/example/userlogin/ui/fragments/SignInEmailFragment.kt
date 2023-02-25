@@ -1,6 +1,5 @@
 package com.example.userlogin.ui.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,39 +12,12 @@ import androidx.fragment.app.Fragment
 import com.example.userlogin.FireBaseAuthSingleton
 import com.example.userlogin.adapter.ProgressDialogFragment
 import com.example.userlogin.databinding.FragmentSignInEmailBinding
-import com.example.userlogin.ui.activities.CreateProfileActivity
-import com.example.userlogin.ui.activities.MainActivity
-import com.example.userlogin.ui.activities.SignInActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.*
-import kotlin.properties.Delegates
+import com.example.userlogin.ui.activities.LoadingCreateProfileActivity
 
 
 class SignInEmailFragment : Fragment() {
-    private val dbRef = FirebaseDatabase.getInstance(
-        "https://myapplication-43a36-default-rtdb.asia-southeast1.firebasedatabase.app"
-    )
-        .reference
     private lateinit var binding: FragmentSignInEmailBinding
     private val progressDialog: ProgressDialogFragment = ProgressDialogFragment.newInstance()
-    private val myScope = CoroutineScope(Dispatchers.Main + Job())
-    private suspend fun getData(): String {
-        val user = FireBaseAuthSingleton.instance.currentUser
-        return if(user!= null){
-            val uid = user.uid
-            checkProfileIsCreated(uid)
-            delay(1000)
-            "Dữ liệu đã lấy được"
-        }else "User null"
-    }
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,7 +89,6 @@ class SignInEmailFragment : Fragment() {
     }
 
     private fun clickContinue() {
-
         progressDialog.show(childFragmentManager, "progress")
         val email = binding.edtSignInEmail.text.toString().trim()
         val password = binding.edtSignInEmailPassword.text.toString().trim()
@@ -132,53 +103,25 @@ class SignInEmailFragment : Fragment() {
         binding.btnSignInEmailContinue.isEnabled = email.isNotEmpty() && password.isNotEmpty()
     }
 
-    private fun checkAndSwitchScreen() {
-        myScope.launch{
-            val result = getData()
-            Log.w("coroutines get data", result)
-        }
-    }
-
-    private fun goToCreateProfile() {
-        val intent = Intent(requireContext(), CreateProfileActivity::class.java)
-        startActivity(intent)
-        activity?.finish()
-    }
-
-    private fun goToMainActivity() {
-        val intent = Intent(requireContext(), MainActivity::class.java)
-        startActivity(intent)
-        activity?.finish()
-    }
-
     private fun checkSignIn(email: String, password: String) {
         val mAuth = FireBaseAuthSingleton.instance
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if(it.isSuccessful){
+
                 Log.w("sign in", "successful")
-                checkAndSwitchScreen()
+                goToLoadingActivity()
 
             }else{
+                progressDialog.dismiss()
                 Log.w("sign in error", it.exception?.message.toString())
                 binding.tvInvalidSignInEmail.visibility = View.VISIBLE
             }
         }
     }
 
-    private fun checkProfileIsCreated(uid: String){
-        val checkRef = dbRef.child("users-profile").child(uid)
-        checkRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    goToMainActivity()
-                } else{
-                    goToCreateProfile()
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
+    private fun goToLoadingActivity() {
+        val intent = Intent(requireContext(), LoadingCreateProfileActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
-
 }
